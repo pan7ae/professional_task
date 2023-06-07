@@ -4,7 +4,7 @@ from databases import Database
 from fastapi import HTTPException, status
 
 from ..db.promotion import promotions
-from ..models.promotion import Promo, PromoWithDetails, PromoCreate, PromoUpdate
+from ..models.models import Promo, PromoWithDetails, PromoCreate, PromoUpdate
 
 
 class PromoService:

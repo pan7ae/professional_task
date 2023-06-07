@@ -3,10 +3,10 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, status
 
 from .depends import get_promo_service
-from ..models.prize import PrizeCreate
-from ..models.promotion import Promo, PromoWithDetails, PromoCreate, PromoUpdate
-from ..models.result import Result
-from ..models.user import UserCreate
+from ..models.models import PrizeCreate
+from ..models.models import Promo, PromoWithDetails, PromoCreate, PromoUpdate
+from ..models.models import Result
+from ..models.models import UserCreate
 from ..services.promo import PromoService
 
 router = APIRouter(
