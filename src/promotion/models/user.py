@@ -15,6 +15,6 @@ class UserCreate(BaseModel):
 
     @classmethod
     def as_form(
-            cls,
-            name: str = Form(...)):
+        cls,
+        name: str = Form(...)):
         return cls(name=name)

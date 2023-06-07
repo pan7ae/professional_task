@@ -27,9 +27,9 @@ class PromoCreate(BaseModel):
 
     @classmethod
     def as_form(
-            cls,
-            name: str = Form(...),
-            description: Optional[str] = Form(None)):
+        cls,
+        name: str = Form(...),
+        description: Optional[str] = Form(None)):
         return cls(name=name, description=description)
 
 

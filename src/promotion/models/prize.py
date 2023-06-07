@@ -17,6 +17,6 @@ class PrizeCreate(BaseModel):
 
     @classmethod
     def as_form(
-            cls,
-            description: str = Form(None)):
+        cls,
+        description: str = Form(None)):
         return cls(name=description)
