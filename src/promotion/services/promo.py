@@ -46,7 +46,7 @@ class PromoService:
         await self.database.execute(query=query)
         return promo
 
-    async def delete(self, promo_id: int):
+    async def delete(self, promo_id: int) -> None:
         await self._get(promo_id)
 
         query = promotions.delete().where(promotions.c.id == promo_id)
