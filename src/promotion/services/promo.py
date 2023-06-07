@@ -11,7 +11,7 @@ class PromoService:
     def __init__(self, database: Database):
         self.database = database
 
-    async def _get(self, promo_id: int) -> PromoWithDetails:
+    async def get_promo_with_details(self, promo_id: int) -> PromoWithDetails:
         query = promotions.select().where(promotions.c.id == promo_id)
         promo = await self.database.fetch_one(query=query)
 
@@ -19,14 +19,14 @@ class PromoService:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
         return PromoWithDetails.parse_obj(promo)
 
-    async def get_list(self) -> List[Promo]:
+    async def get_promo_list(self) -> List[Promo]:
         query = promotions.select()
         return await self.database.fetch_all(query=query)
 
-    async def get(self, promo_id: int) -> PromoWithDetails:
-        return await self._get(promo_id)
+    async def get_promo(self, promo_id: int) -> PromoWithDetails:
+        return await self.get_promo_with_details(promo_id)
 
-    async def create(self, promo_data: PromoCreate):
+    async def create_promo(self, promo_data: PromoCreate):
         promo = PromoCreate(**promo_data.dict())
 
         values = {**promo.dict()}
@@ -34,8 +34,8 @@ class PromoService:
         promo_res = await self.database.execute(query=query)
         return promo_res
 
-    async def update(self, promo_id: int, promo_data: PromoUpdate) -> Promo:
-        promo = await self._get(promo_id)
+    async def update_promo(self, promo_id: int, promo_data: PromoUpdate) -> Promo:
+        promo = await self.get_promo_with_details(promo_id)
 
         for field, value in promo_data:
             if value:
@@ -46,8 +46,8 @@ class PromoService:
         await self.database.execute(query=query)
         return promo
 
-    async def delete(self, promo_id: int) -> None:
-        await self._get(promo_id)
+    async def delete_promo(self, promo_id: int) -> None:
+        await self.get_promo_with_details(promo_id)
 
         query = promotions.delete().where(promotions.c.id == promo_id)
         return await self.database.execute(query=query)

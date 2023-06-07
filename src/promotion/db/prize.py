@@ -1,9 +1,9 @@
-import sqlalchemy as sa
+import sqlalchemy
 from .database import metadata
 
-prizes = sa.Table(
+prizes = sqlalchemy.Table(
     "prizes",
     metadata,
-    sa.Column("id", sa.Integer, primary_key=True, autoincrement=True, unique=True),
-    sa.Column("description", sa.String, nullable=True)
+    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True, unique=True),
+    sqlalchemy.Column("description", sqlalchemy.String, nullable=True)
 )

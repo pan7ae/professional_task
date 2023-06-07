@@ -1,9 +1,9 @@
-import sqlalchemy as sa
+import sqlalchemy
 from .database import metadata
 
-users = sa.Table(
+users = sqlalchemy.Table(
     "users",
     metadata,
-    sa.Column("id", sa.Integer, primary_key=True, autoincrement=True, unique=True),
-    sa.Column("name", sa.String, unique=True),
+    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True, unique=True),
+    sqlalchemy.Column("name", sqlalchemy.String, unique=True),
 )
