@@ -9,3 +9,12 @@ engine = create_engine(
     pool_pre_ping=True,
     pool_size=200
 )
+
+def create_table(name, *columns):
+    id_column = sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    return sqlalchemy.Table(
+        name,
+        metadata,
+        id_column,
+        *columns
+    )

@@ -1,9 +1,8 @@
 import sqlalchemy
-from .database import metadata
+from .database import create_table
 
-prizes = sqlalchemy.Table(
+
+prizes = create_table(
     "prizes",
-    metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True, unique=True),
     sqlalchemy.Column("description", sqlalchemy.String, nullable=True)
 )
