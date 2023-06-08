@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  db_promotion:
+    environment:
+      - POSTGRES_USER=fastapi_promotion
+      - POSTGRES_PASSWORD=fastapi_promotion
+      - POSTGRES_DB=fastapi_promotion
