@@ -1,7 +1,7 @@
 import sqlalchemy
 from .database import metadata
 
-promotions = sa.Table(
+promotions = sqlalchemy.Table(
     "promotions",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True, autoincrement=True, unique=True),
